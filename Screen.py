@@ -1,6 +1,7 @@
 #!/usr/bin/python3.4
 
 import sys, pygame
+from pygame.locals import *
 
 class Screen:
 
@@ -9,23 +10,19 @@ class Screen:
 
     screen = None
 
-    def __init__(self):
-        pygame.init()
-
-
-    def set_screen_height_and_width(self, x=0, y=0):
+    def start_screen(self, x ,y ,title):
         self.screen_x = x
         self.screen_y = y
+        pygame.init()
         self.screen = pygame.display.set_mode((self.screen_x, self.screen_y))
-
-
-    def start_screen(self, title="testing"):
         pygame.display.set_caption(title)
 
-    def change_background_color(self,red,blue,green):
+
+
+
+    def change_background_color(self,red,green,blue):
         background = pygame.Surface(self.screen.get_size())
         background = background.convert()
-        background.fill((red,blue,green))
+        background.fill((red,green,blue))
         self.screen.blit(background,(0,0))
         pygame.display.flip()
-
